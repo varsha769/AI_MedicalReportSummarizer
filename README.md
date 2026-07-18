@@ -1,142 +1,257 @@
 # MediScan AI — Medical Report Summarizer
 
-An AI-powered web application that turns complex PDF medical reports into simple,
-patient-friendly health insights. Upload a lab report PDF and get:
+# 🩺 AI Medical Report Summarizer
 
-- Automatic extraction of medical parameters (test name, value, unit, reference range)
-- Abnormality detection with **Normal / High / Low** classification and severity
-- A plain-language AI summary explaining each flagged value
-- General lifestyle & dietary recommendations
-- An interactive analytics dashboard with Plotly charts
-- A health score (0-100) based on detected abnormalities
+An **AI-powered healthcare web application** that transforms complex **PDF medical reports** into **simple, patient-friendly health insights**.
+## 🌐 Live Demo
 
-> ⚠️ **Educational use only.** This tool does not provide a medical diagnosis and does
-> not replace consultation with qualified healthcare professionals.
+🔗 Live Application: https://website-link-generat-pnli.bolt.host
+
+Users can upload a laboratory report in **PDF format**, and the application automatically extracts important medical parameters, identifies abnormal values, generates easy-to-understand AI summaries, and visualizes health analytics through an interactive dashboard.
+
+> ⚠️ **Disclaimer:** This application is developed **only for educational and informational purposes**. It does **not** provide medical diagnosis and should **not** replace consultation with qualified healthcare professionals.
 
 ---
 
-## Features
+# ✨ Features
 
-### 1. PDF Report Parser
-Upload a PDF lab report. Text is extracted in the browser using `pdfjs-dist`
-(no server needed), cleaned, and passed to the analysis engine.
-
-### 2. Medical Parameter Extraction
-Pattern matching against a built-in knowledge base of common lab tests
-(haematology, lipids, metabolic, renal, electrolytes, thyroid, vitamins, liver)
-identifies test name, value, unit, and reference range.
-
-### 3. Abnormality Detection
-Each parameter is classified as **Normal**, **High**, or **Low** against its
-reference range, with a severity level (mild / moderate / severe) based on how
-far outside the range the value falls.
-
-### 4. AI Summary Generator
-For every abnormal value, the app produces a plain-language explanation and a
-general recommendation drawn from the knowledge base. A top-level summary
-describes the overall picture and the health score.
-
-### 5. Analytics Dashboard
-- Stat cards: total parameters, normal / high / low counts, health score
-- Plotly charts: measured-vs-reference bar, status distribution donut,
-  abnormal-parameters deviation bar
-
-### 6. UI
-Healthcare-themed teal/white design with sidebar navigation, drag-and-drop
-upload, color-coded results (green = normal, red = high, orange = low),
-and a persistent safety disclaimer.
+## 📄 PDF Report Upload
+- Upload laboratory reports in PDF format
+- Client-side PDF text extraction
+- Fast and secure processing
 
 ---
 
-## Tech Stack
+## 🔍 Medical Parameter Extraction
 
-- **React 18 + Vite** — frontend
-- **pdfjs-dist** — client-side PDF text extraction
-- **Plotly (react-plotly.js)** — interactive charts
-- **Vanilla CSS** — healthcare-themed design system
+Automatically extracts:
 
-> The original spec called for Streamlit/Python. This implementation delivers the
-> same feature set as a Vite + React app so it runs in any browser without a
-> Python runtime.
+- 🧪 Test Name
+- 📊 Result Value
+- 📏 Unit
+- 📑 Reference Range
 
 ---
 
-## Getting Started
+## 🚨 Abnormality Detection
+
+Automatically classifies every medical parameter as:
+
+🟢 Normal
+
+🟠 Low
+
+🔴 High
+
+Also detects severity levels:
+- Mild
+- Moderate
+- Severe
+
+---
+
+## 🤖 AI Health Summary
+
+Generates a patient-friendly summary including:
+
+- 📌 Overall Health Overview
+- ⚠️ Abnormal Findings
+- 💡 Simple Medical Explanation
+- 🥗 Lifestyle Recommendations
+- 🥦 Diet Suggestions
+- 👨‍⚕️ When to Consult a Doctor
+
+---
+
+## 📊 Health Analytics Dashboard
+
+Interactive dashboard displaying:
+
+- 📋 Total Parameters
+- 🟢 Normal Count
+- 🔴 High Count
+- 🟠 Low Count
+- ❤️ Overall Health Score (0–100)
+
+Visualizations include:
+
+- 📈 Plotly Bar Charts
+- 🥧 Status Distribution Pie Chart
+- 📉 Abnormal Parameter Comparison
+
+---
+
+## 🎨 User Interface
+
+✔️ Modern Healthcare Theme
+
+✔️ Responsive Design
+
+✔️ Drag & Drop PDF Upload
+
+✔️ Color-coded Results
+
+✔️ Interactive Dashboard
+
+✔️ Persistent Medical Disclaimer
+
+---
+
+# 🛠️ Tech Stack
+
+| Technology | Purpose |
+|------------|---------|
+| ⚛️ React 18 | Frontend |
+| ⚡ Vite | Build Tool |
+| 📄 pdfjs-dist | PDF Text Extraction |
+| 📊 Plotly | Interactive Charts |
+| 🎨 CSS | UI Styling |
+| 💻 JavaScript | Application Logic |
+
+---
+
+# 🚀 Getting Started
+
+## Install Dependencies
 
 ```bash
 npm install
-npm run dev      # start dev server
-npm run build    # production build
-npm run preview  # preview the build
 ```
 
-Then open the printed local URL in your browser.
+## Start Development Server
 
-### Try without a PDF
-On the Upload screen, click **"Try a sample report"** to load a built-in demo
-report (CBC + lipid + metabolic + thyroid + vitamins + liver panel) and explore
-every feature instantly.
+```bash
+npm run dev
+```
+
+## Build for Production
+
+```bash
+npm run build
+```
+
+## Preview Production Build
+
+```bash
+npm run preview
+```
 
 ---
 
-## Project Structure
+# 📂 Project Structure
 
-```
-.
+```text
+Medical-Report-Summarizer
+│
 ├── index.html
 ├── package.json
 ├── vite.config.js
 ├── README.md
-└── src/
+│
+└── src
     ├── main.jsx
     ├── App.jsx
-    ├── styles/
-    │   └── global.css
-    ├── data/
-    │   ├── medicalDB.js        # test reference ranges, explanations, recommendations
-    │   └── sampleReport.js     # in-app demo report
-    ├── lib/
-    │   ├── pdfParser.js         # PDF text extraction + cleaning
-    │   ├── parameterExtractor.js # regex-based lab parameter extraction
-    │   └── medicalAnalysis.js   # classification, scoring, summary generation
-    └── components/
-        ├── Sidebar.jsx
-        ├── UploadPanel.jsx
-        ├── StatCards.jsx
-        ├── ResultsTable.jsx
-        ├── Charts.jsx
-        └── SummaryPanel.jsx
+    ├── components
+    ├── data
+    ├── lib
+    └── styles
 ```
 
 ---
 
-## Workflow
+# ⚙️ Application Workflow
 
-1. User uploads a PDF (or loads the sample report)
-2. `pdfParser` extracts and cleans text
-3. `parameterExtractor` identifies lab parameters and reference ranges
-4. `medicalAnalysis` classifies each value (Normal / High / Low) and assigns severity
-5. `generateSummary` produces plain-language explanations + recommendations
-6. Dashboard renders stat cards, table, and Plotly charts
-7. AI Summary view presents flagged values with explanations and the disclaimer
+1️⃣ Upload PDF Medical Report
+
+⬇️
+
+2️⃣ Extract Medical Text
+
+⬇️
+
+3️⃣ Detect Laboratory Parameters
+
+⬇️
+
+4️⃣ Classify High / Low / Normal Values
+
+⬇️
+
+5️⃣ Generate AI Summary
+
+⬇️
+
+6️⃣ Display Interactive Dashboard
 
 ---
 
-## Supported Lab Tests (knowledge base)
+# 🧪 Supported Medical Tests
 
-Haemoglobin, RBC, WBC, Platelets, Fasting Glucose, HbA1c, Total Cholesterol, LDL,
-HDL, Triglycerides, Creatinine, Urea (BUN), Sodium, Potassium, TSH, Vitamin D,
-Vitamin B12, ALT (SGPT), AST (SGOT), Bilirubin.
+✔️ Haemoglobin
 
-Each entry includes adult reference ranges, plain-language explanations for
-high/low results, and general recommendations.
+✔️ RBC
+
+✔️ WBC
+
+✔️ Platelets
+
+✔️ Blood Glucose
+
+✔️ HbA1c
+
+✔️ Cholesterol
+
+✔️ HDL
+
+✔️ LDL
+
+✔️ Triglycerides
+
+✔️ Creatinine
+
+✔️ Urea
+
+✔️ Sodium
+
+✔️ Potassium
+
+✔️ TSH
+
+✔️ Vitamin D
+
+✔️ Vitamin B12
+
+✔️ ALT (SGPT)
+
+✔️ AST (SGOT)
+
+✔️ Bilirubin
 
 ---
 
-## Disclaimer
+# 🔮 Future Enhancements
 
-This AI Medical Report Summarizer is designed for educational and informational
-purposes only. It does not provide medical diagnosis and should not replace
-consultation with qualified healthcare professionals. Always seek the advice of
-your physician or other qualified health provider with any questions you may have
-regarding a medical condition.
+- 🌐 Multi-language Support
+- ☁️ Cloud Database Integration
+- 📱 Mobile Application
+- 🤖 AI Chatbot Assistant
+- 📊 Historical Report Comparison
+- 🔐 User Authentication
+
+---
+
+# 📌 Disclaimer
+
+⚠️ This AI Medical Report Summarizer is designed **only for educational and informational purposes**.
+
+It **does not provide medical diagnosis** and should **not replace consultation with qualified healthcare professionals**.
+
+Always seek professional medical advice regarding any health condition.
+
+---
+
+# ⭐ Support
+
+If you found this project useful, consider giving it a ⭐ on GitHub!
+
+Happy Coding! 🚀
